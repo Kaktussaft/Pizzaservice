@@ -1,0 +1,22 @@
+Zutaten
+
+1. Tomatensauce
+2. Mozzarella
+3. Salami
+4. Schinken
+5. Pilze
+6. Zwiebeln
+7. Paprika
+8. Oliven
+9. Speck
+10. Thunfisch
+
+Pizzen
+
+1. Margherita (Tomatensauce, Mozzarella)
+2. Pepperoni (Tomatensauce, Mozzarella, Salami)
+3. Supreme (Tomatensauce, Mozzarella, Salami, Pilze, Zwiebeln, Paprika, Oliven)
+4. BBQ (Tomatensauce, Mozzarella, Speck, Zwiebeln, Schinken)
+5. Tonno (Tomatensauce, Mozzarella, Zwiebeln, Oliven, Thunfisch)
+6. Prosciutto (Tomatensauce, Mozzarella, Schinken)
+7. Vegetarisch (Tomatensauce, Mozzarella, Pilze, Oliven, Zwiebeln, Paprika)
