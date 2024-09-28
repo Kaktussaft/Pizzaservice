@@ -1,0 +1,11 @@
+RewriteEngine On
+Options -MultiViews
+
+RewriteBase /Pizzaservice
+
+RewriteRule ^views/ - [L]
+RewriteRule ^(ressources|css|js)/ - [L]
+RewriteRule ^index\.php$ - [L]
+RewriteRule \.php$ - [F,L]
+
+RewriteRule ^([^/]+)/? index.php?url=$1 [L,QSA]

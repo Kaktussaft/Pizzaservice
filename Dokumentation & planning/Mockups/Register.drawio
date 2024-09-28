@@ -1,0 +1,72 @@
+<mxfile host="65bd71144e">
+    <diagram id="C3x9KFAz_dhpqgYpBoHR" name="Page-1">
+        <mxGraphModel dx="922" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="22" value="" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.rrect;rSize=0;strokeColor=#000000;fillColor=#FF8000;rounded=1;fontSize=13;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="230" y="130" width="390" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.rrect;rSize=0;fontSize=17;fontColor=#666666;align=left;spacingLeft=5;fillColor=#FF8000;strokeColor=none;resizeWidth=1;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry width="390" height="20" relative="1" as="geometry">
+                        <mxPoint y="70" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="62" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 18px;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Registrieren&lt;/span&gt;&lt;/font&gt;" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.anchor;fontSize=18;fontColor=#666666;align=left;resizeWidth=1;spacingLeft=0;strokeColor=#000000;fillColor=#000000;rounded=1;fontStyle=1" parent="22" vertex="1">
+                    <mxGeometry x="140" y="10" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 13px;&quot;&gt;Name&lt;/span&gt;" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.anchor;fontSize=12;fontColor=#666666;align=left;resizeWidth=1;spacingLeft=0;strokeColor=#000000;fillColor=#000000;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="25" y="40" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.rrect;rSize=0;strokeColor=#000000;fontColor=#666666;align=left;spacingLeft=5;resizeWidth=1;fillColor=#FFE6CC;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="25" y="60" width="150" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 13px;&quot;&gt;Nachname&lt;/span&gt;" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.anchor;fontSize=12;fontColor=#666666;align=left;resizeWidth=1;spacingLeft=0;strokeColor=#000000;fillColor=#000000;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="25" y="90" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.rrect;rSize=0;strokeColor=#000000;fontColor=#666666;align=left;spacingLeft=5;resizeWidth=1;fillColor=#FFE6CC;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="25" y="110" width="150" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 13px;&quot;&gt;Passwort&lt;/span&gt;" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.anchor;fontSize=12;fontColor=#666666;align=left;resizeWidth=1;spacingLeft=0;strokeColor=#000000;fillColor=#000000;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="25" y="150" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.rrect;rSize=0;strokeColor=#000000;fontColor=#666666;align=left;spacingLeft=5;resizeWidth=1;fillColor=#FFE6CC;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="25" y="170" width="150" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 13px;&quot;&gt;Passwort bestätigen&lt;/font&gt;" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.anchor;fontSize=12;fontColor=#666666;align=left;resizeWidth=1;spacingLeft=0;strokeColor=#000000;fillColor=#000000;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="25" y="200" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.rrect;rSize=0;strokeColor=#000000;fontColor=#666666;align=left;spacingLeft=5;resizeWidth=1;fillColor=#FFE6CC;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="25" y="220" width="150" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.rrect;rSize=0;strokeColor=#000000;fontColor=#666666;align=left;spacingLeft=5;resizeWidth=1;fillColor=#FFE6CC;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="215" y="220" width="150" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 13px;&quot;&gt;Hausnummer&lt;/span&gt;" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.anchor;fontSize=12;fontColor=#666666;align=left;resizeWidth=1;spacingLeft=0;strokeColor=#000000;fillColor=#000000;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="215" y="200" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.rrect;rSize=0;strokeColor=#000000;fontColor=#666666;align=left;spacingLeft=5;resizeWidth=1;fillColor=#FFE6CC;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="215" y="170" width="150" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 13px;&quot;&gt;Straße&lt;/span&gt;" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.anchor;fontSize=12;fontColor=#666666;align=left;resizeWidth=1;spacingLeft=0;strokeColor=#000000;fillColor=#000000;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="215" y="150" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.rrect;rSize=0;strokeColor=#000000;fontColor=#666666;align=left;spacingLeft=5;resizeWidth=1;fillColor=#FFE6CC;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="215" y="110" width="150" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 13px;&quot;&gt;Postleitzahl&lt;/span&gt;" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.anchor;fontSize=12;fontColor=#666666;align=left;resizeWidth=1;spacingLeft=0;strokeColor=#000000;fillColor=#000000;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="215" y="90" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.rrect;rSize=0;strokeColor=#000000;fontColor=#666666;align=left;spacingLeft=5;resizeWidth=1;fillColor=#FFE6CC;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="215" y="60" width="150" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 13px;&quot;&gt;Stadt&lt;/span&gt;" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.anchor;fontSize=12;fontColor=#666666;align=left;resizeWidth=1;spacingLeft=0;strokeColor=#000000;fillColor=#000000;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="215" y="40" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="&lt;font color=&quot;#000000&quot;&gt;Registrieren&lt;/font&gt;" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.rrect;rSize=5;strokeColor=#000000;fontColor=#ffffff;fillColor=#FFE6CC;fontSize=16;fontStyle=1;rounded=1;" parent="22" vertex="1">
+                    <mxGeometry x="140" y="260" width="110" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
