@@ -1,11 +1,10 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 require_once('Routes.php');
 
-echo $_GET['url'];
+$request = $_SERVER['REQUEST_URI'];
+$request = str_replace('/Pizzaservice/', '', $request);
+Route::dispatch($request);
 
 spl_autoload_register(function ($class_name) {
     $file = 'app/' . $class_name . '.php';

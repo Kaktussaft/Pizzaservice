@@ -1,0 +1,9 @@
+version: 4.34.2
+services:
+www:
+image: php:apache
+volumes:
+  -"./:/var/www/html" #sync localhost and container
+ports:
+  -80:80
+  -443:443

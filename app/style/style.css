@@ -4,4 +4,62 @@ body {
     background-repeat: no-repeat; 
     background-position: bottom; 
     height: 100vh;
+    font-family:Helvetica;
+    display: block;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-box {
+    background-color: #ff9933; 
+    border: 2px solid black;
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+}
+
+.register-box h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: black;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    width: 48%;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 48%;
+    padding: 8px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    background-color: #f5e0cc; 
+}
+
+.input-full {
+    width: 100%;
+}
+
+.register-box button {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid black;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.register-box button:hover {
+    background-color: #e68a00; 
 }
