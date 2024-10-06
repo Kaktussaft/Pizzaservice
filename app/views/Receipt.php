@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Pizzaservice/app/style/style.css">
+    <link rel="stylesheet" href="/Pizzaservice/app/style/Shared.css">
+    <link rel="stylesheet" href="/Pizzaservice/app/style/Receipt.css">
     <script src="/Pizzaservice/app/shared.js"></script>
     <title>Receipt</title>
 </head>
 <body>
+<div class="navigation">
+        <button class="navigation-button" type="submit">Hauptmenü</button>
+    </div>
     
-    <p>Receipt</p>
+
     
 </body>
 </html>

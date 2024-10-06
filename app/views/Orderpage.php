@@ -11,53 +11,75 @@
 </head>
 
 <body>
+    <div class="navigation">
+        <button class="navigation-button" type="submit">Rechnung</button>
+        <button class="navigation-button" type="submit">Logout</button>
+    </div>
+
     <div class="order-box">
-        <br><br>
+        <br>
         <h1>Pizza bestellen</h1>
         <br>
-        <div class="options">
-            <div>
-                <label class="select-label" for="pizza">Pizza zusammenstellen</label><br><br>
-                <div class="checkbox-container">
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option1"> Tomatensauce
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option2"> Mozzarella
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option3"> Salami 
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option4"> Schinken
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option5"> Pilze
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option6"> Zwiebeln
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option7"> Paprika
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option8"> Oliven
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option9"> Speck
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option10"> Thunfisch
-                    </label>
-                </div>
 
-                <br>
-                
+        <div class="container">
+            <div>
+                <label class="select-ingredients" for="pizza">Pizza zusammenstellen</label><br><br>
             </div>
             <div>
-                <label class="select-label" for="pizza">Pizza auswählen</label><br><br>
+                <label class="select-pizza" for="pizza">Pizza auswählen</label><br><br>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="ingredients">
+                <div>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="zutaten[]" value="option1">
+                        <img src="/Pizzaservice/app/ressources/tomatensauce.jpeg" alt="Tomatensauce" class="ingredient-image"> Tomatensauce
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="zutaten[]" value="option2">
+                        <img src="/Pizzaservice/app/ressources/mozzarella.jpeg" alt="Mozzarella" class="ingredient-image"> Mozzarella
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="zutaten[]" value="option3">
+                        <img src="/Pizzaservice/app/ressources/salami.jpeg" alt="Salami" class="ingredient-image"> Salami
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="zutaten[]" value="option4">
+                        <img src="/Pizzaservice/app/ressources/schinken.jpeg" alt="Schinken" class="ingredient-image"> Schinken
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="zutaten[]" value="option5">
+                        <img src="/Pizzaservice/app/ressources/pilze.jpeg" alt="Pilze" class="ingredient-image"> Pilze
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="zutaten[]" value="option6">
+                        <img src="/Pizzaservice/app/ressources/zwiebeln.jpeg" alt="Zwiebeln" class="ingredient-image"> Zwiebeln
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="zutaten[]" value="option7">
+                        <img src="/Pizzaservice/app/ressources/paprika.jpeg" alt="Paprika" class="ingredient-image"> Paprika
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="zutaten[]" value="option8">
+                        <img src="/Pizzaservice/app/ressources/oliven.jpeg" alt="Oliven" class="ingredient-image"> Oliven
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="zutaten[]" value="option9">
+                        <img src="/Pizzaservice/app/ressources/speck.jpeg" alt="Speck" class="ingredient-image"> Speck
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="zutaten[]" value="option10">
+                        <img src="/Pizzaservice/app/ressources/thunfisch.jpeg" alt="Thunfisch" class="ingredient-image"> Thunfisch
+                    </label>
+
+                    <br>
+                </div>
+            </div>
+            <div class="select-pizza">
                 <select class="pizza-select" id="pizza">
-                    <option>Margherita  </option>
+                    <option>Margherita </option>
                     <option> Pepperoni </option>
                     <option> Supreme </option>
                     <option> BBQ </option>
@@ -66,14 +88,43 @@
                     <option> Vegetarisch </option>
                 </select>
             </div>
-        </div>
 
+        </div>
         <button class="orderpage-button" type="submit">zur Bestellung hinzufügen</button><br>
-        <button class="orderpage-button" type="button">Meine Bestellung</button><br>
+        <button class="orderpage-button" type="button" id="orderButton">Meine Bestellung</button><br>
         <button class="orderpage-button" type="button">Bestellen</button>
+
+
     </div>
 
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-button" id="closeButton">&times;</span>
+            <h2>Bestellübersicht</h2>
+            <p>Hier ist Ihre Bestellung:</p>
 
+        </div>
+    </div>
+
+    <script>
+        var orderButton = document.getElementById('orderButton');
+        var popup = document.getElementById('popup');
+        var closeButton = document.getElementById('closeButton');
+
+        orderButton.addEventListener('click', function() {
+            popup.style.display = 'flex';
+        });
+
+        closeButton.addEventListener('click', function() {
+            popup.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == popup) {
+                popup.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>

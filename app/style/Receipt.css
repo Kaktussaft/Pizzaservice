@@ -1,0 +1,9 @@
+.receipt-box {
+    background-color: #ff9933; 
+    border: 2px solid black;
+    padding: 40px;
+    width: 350px;
+    height: 350px;
+    text-align: center;
+    border-radius: 50%; 
+}
