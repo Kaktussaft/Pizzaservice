@@ -9,6 +9,7 @@ body {
     margin: 0;
     justify-content: center;
     align-items: center;
+    display: flex;
 }
 
 .register-box {
@@ -17,9 +18,61 @@ body {
     padding: 20px;
     width: 400px;
     text-align: center;
+    align-self: center;
+    visibility: visible;
 }
 
-.register-box h1 {
+.login-box {
+    background-color: #ff9933; 
+    border: 2px solid black;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    visibility: visible;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    background-color: #f5e0cc; 
+}
+
+.order-box {
+    background-color: #f5e0cc; /* Light tan color */
+    border: 2px solid black;
+    padding: 40px;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    border-radius: 50%; /* Circle shape */
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.options div {
+    width: 45%;
+    text-align: center;
+}
+
+.options select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+/* 
+Start of general style
+*/
+
+.h1 {
     margin-bottom: 20px;
     font-size: 24px;
     color: black;
@@ -43,14 +96,15 @@ body {
     padding: 8px;
     border: 1px solid black;
     box-sizing: border-box;
-    background-color: #f5e0cc; 
+    background-color: #FFE6CC; 
+    border-radius: 5px;
 }
 
 .input-full {
     width: 100%;
 }
 
-.register-box button {
+.action-button {
     background-color: white;
     color: black;
     padding: 10px 20px;
@@ -58,8 +112,16 @@ body {
     font-size: 16px;
     cursor: pointer;
     margin-top: 10px;
+    border-radius: 5px;
 }
 
-.register-box button:hover {
-    background-color: #e68a00; 
+.action-button:hover {
+    background-color: #FFE6CC; 
+}
+
+.divider {
+    height: 1px;
+    background-color: white;
+    margin-bottom: 15px;
+    margin-top:15px; 
 }
