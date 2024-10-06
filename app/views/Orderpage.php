@@ -8,7 +8,29 @@
     <title>Orderpage</title>
 </head>
 <body>
-    <p>Orderpage</p>
+<div class="order-box">
+        <h1>Pizza bestellen</h1>
+        
+        <div class="options">
+            <div>
+                <label for="zutaten">Pizza selber zusammenstellen</label><br>
+                <select id="zutaten">
+                    <option>Zutaten auswählen</option>
+                </select>
+            </div>
+            <div>
+                <label for="pizza">Pizza auswählen</label><br>
+                <select id="pizza">
+                    <option>Pizza auswählen</option>
+                </select>
+            </div>
+        </div>
+        
+        <button type="button">zur Bestellung hinzufügen</button><br>
+        <button type="button">Meine Bestellung</button><br>
+        <button type="button">Bestellen</button>
+    </div>
+
     
 </body>
 </html>
