@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Pizzaservice/app/style/style.css">
+    <link rel="stylesheet" href="/Pizzaservice/app/style/Shared.css">
+    <link rel="stylesheet" href="/Pizzaservice/app/style/Login.css">
     <script src="/Pizzaservice/app/shared.js"></script>
     <title>Login</title>
 </head>
