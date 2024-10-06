@@ -8,11 +8,45 @@
     border-radius: 5%; 
 }
 
-.container {
-    display: flex;
-    justify-content: center; 
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 10px; 
+.grid-container {
+    display: grid;
+    grid-template-columns: 66% 34%;
+    grid-template-rows: auto 1fr;
+    gap: 10px;
+    width: 100%;
+    height: 50vh;
+}
+
+.grid-container-equal-split{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto 1fr;
+    gap: 10px;
+    width: 100%;
+    height: 40vh;   
+}
+
+.grid-container-three-way{
+    display: grid;
+    grid-template-columns:33% 33% 33%;
+    grid-template-rows: auto 1fr;
+    gap: 10px;
+    width: 100%;
+}
+
+.grid-item {
+    padding: 10px;
+    position:cen
+}
+
+.label-row {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.content-row {
+
 }
 
 .ingredients {
@@ -23,22 +57,19 @@
     grid-template-columns: repeat(2, 1fr); 
 }
 
-.ingredients div {
-    width: 100%;
-    text-align: center;
-}
 
 .ingredient-image {
-    width: 40px;
-    height: 40px; 
+    width: 50px;
+    height: 50px; 
+    margin-bottom: 5px; 
     margin-right: 8px; 
 }
-
 
 .orderpage-button {
     background-color: white;
     color: black;
     width: 230px;
+    height: 40px; 
     padding: 10px 20px;
     border: 1px solid black;
     font-size: 16px;
@@ -77,20 +108,6 @@
 
 .checkbox-label input[type="checkbox"] {
     margin-right: 8px; 
-}
-
-.select-ingredients{
-        font-weight: bold;
-        font-size: 16px;
-        margin-bottom: 10px;
-    width: 66%;
-}
-
-.select-pizza{
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 10px;
-    width: 34%; 
 }
 
 

@@ -17,67 +17,61 @@
     </div>
 
     <div class="order-box">
-        <br>
-        <h1>Pizza bestellen</h1>
-        <br>
+        <h1>Pizza bestellen</h1><br>
+        <div class="grid-container">
+            <div class="grid-item label-row">Pizza selber Zusammenstellen</div>
+            <div class="grid-item label-row">Pizza auswählen</div>
 
-        <div class="container">
-            <div>
-                <label class="select-ingredients" for="pizza">Pizza zusammenstellen</label><br><br>
-            </div>
-            <div>
-                <label class="select-pizza" for="pizza">Pizza auswählen</label><br><br>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="ingredients">
-                <div>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option1">
-                        <img src="/Pizzaservice/app/ressources/tomatensauce.jpeg" alt="Tomatensauce" class="ingredient-image"> Tomatensauce
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option2">
-                        <img src="/Pizzaservice/app/ressources/mozzarella.jpeg" alt="Mozzarella" class="ingredient-image"> Mozzarella
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option3">
-                        <img src="/Pizzaservice/app/ressources/salami.jpeg" alt="Salami" class="ingredient-image"> Salami
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option4">
-                        <img src="/Pizzaservice/app/ressources/schinken.jpeg" alt="Schinken" class="ingredient-image"> Schinken
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option5">
-                        <img src="/Pizzaservice/app/ressources/pilze.jpeg" alt="Pilze" class="ingredient-image"> Pilze
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option6">
-                        <img src="/Pizzaservice/app/ressources/zwiebeln.jpeg" alt="Zwiebeln" class="ingredient-image"> Zwiebeln
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option7">
-                        <img src="/Pizzaservice/app/ressources/paprika.jpeg" alt="Paprika" class="ingredient-image"> Paprika
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option8">
-                        <img src="/Pizzaservice/app/ressources/oliven.jpeg" alt="Oliven" class="ingredient-image"> Oliven
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option9">
-                        <img src="/Pizzaservice/app/ressources/speck.jpeg" alt="Speck" class="ingredient-image"> Speck
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="zutaten[]" value="option10">
-                        <img src="/Pizzaservice/app/ressources/thunfisch.jpeg" alt="Thunfisch" class="ingredient-image"> Thunfisch
-                    </label>
-
-                    <br>
+            <div class="grid-item content-row">
+                <div class="grid-container-equal-split">
+                    <div>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="zutaten[]" value="option1">
+                            <img src="/Pizzaservice/app/ressources/tomatensauce.jpeg" alt="Tomatensauce" class="ingredient-image"> Tomatensauce
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="zutaten[]" value="option2">
+                            <img src="/Pizzaservice/app/ressources/mozzarella.jpeg" alt="Mozzarella" class="ingredient-image"> Mozzarella
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="zutaten[]" value="option3">
+                            <img src="/Pizzaservice/app/ressources/salami.jpeg" alt="Salami" class="ingredient-image"> Salami
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="zutaten[]" value="option4">
+                            <img src="/Pizzaservice/app/ressources/schinken.jpeg" alt="Schinken" class="ingredient-image"> Schinken
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="zutaten[]" value="option5">
+                            <img src="/Pizzaservice/app/ressources/pilze.jpeg" alt="Pilze" class="ingredient-image"> Pilze
+                        </label>
+                    </div>
+                    <div>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="zutaten[]" value="option6">
+                            <img src="/Pizzaservice/app/ressources/zwiebeln.jpeg" alt="Zwiebeln" class="ingredient-image"> Zwiebeln
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="zutaten[]" value="option7">
+                            <img src="/Pizzaservice/app/ressources/paprika.jpeg" alt="Paprika" class="ingredient-image"> Paprika
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="zutaten[]" value="option8">
+                            <img src="/Pizzaservice/app/ressources/oliven.jpeg" alt="Oliven" class="ingredient-image"> Oliven
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="zutaten[]" value="option9">
+                            <img src="/Pizzaservice/app/ressources/speck.jpeg" alt="Speck" class="ingredient-image"> Speck
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="zutaten[]" value="option10">
+                            <img src="/Pizzaservice/app/ressources/thunfisch.jpeg" alt="Thunfisch" class="ingredient-image"> Thunfisch
+                        </label>
+                    </div>
                 </div>
             </div>
-            <div class="select-pizza">
+
+            <div class="grid-item content-row">
                 <select class="pizza-select" id="pizza">
                     <option>Margherita </option>
                     <option> Pepperoni </option>
@@ -89,22 +83,25 @@
                 </select>
             </div>
 
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <span class="close-button" id="closeButton">&times;</span>
+                    <h2>Bestellübersicht</h2>
+                    <p>Hier ist Ihre Bestellung:</p>
+
+                </div>
+            </div>
         </div>
-        <button class="orderpage-button" type="submit">zur Bestellung hinzufügen</button><br>
-        <button class="orderpage-button" type="button" id="orderButton">Meine Bestellung</button><br>
-        <button class="orderpage-button" type="button">Bestellen</button>
 
-
+        <div class="grid-container-three-way">
+            <button class="orderpage-button" type="submit">zur Bestellung hinzufügen</button>
+            <button class="orderpage-button" type="button" id="orderButton">Meine Bestellung</button>
+            <button class="orderpage-button" type="button">Bestellen</button>
+        </div>
     </div>
 
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close-button" id="closeButton">&times;</span>
-            <h2>Bestellübersicht</h2>
-            <p>Hier ist Ihre Bestellung:</p>
 
-        </div>
-    </div>
+
 
     <script>
         var orderButton = document.getElementById('orderButton');
