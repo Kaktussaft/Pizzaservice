@@ -1,15 +1,15 @@
 Zutaten
 
-1. Tomatensauce
-2. Mozzarella
-3. Salami
-4. Schinken
-5. Pilze
-6. Zwiebeln
-7. Paprika
-8. Oliven
-9. Speck
-10. Thunfisch
+1. Tomatensauce  10 Cent
+2. Mozzarella    20 Cent
+3. Salami        70 Cent
+4. Schinken      70 Cent
+5. Pilze         20 Cent
+6. Zwiebeln      20 Cent
+7. Paprika       20 Cent
+8. Oliven        20 Cent
+9. Speck         70 Cent
+10. Thunfisch    70 Cent
 
 Pizzen
 
