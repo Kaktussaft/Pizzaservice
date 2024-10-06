@@ -1,0 +1,28 @@
+.login-box {
+    background-color: #ff9933; 
+    border: 2px solid black;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    visibility: visible;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    background-color: #f5e0cc; 
+}
+
+.register-box {
+    background-color: #ff9933; 
+    border: 2px solid black;
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    align-self: center;
+    visibility: visible;
+}
+
