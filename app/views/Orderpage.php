@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Pizzaservice/app/style/Shared.css">
     <link rel="stylesheet" href="/Pizzaservice/app/style/Orderpage.css">
-    <script src="/Pizzaservice/app/shared.js"></script>
+    <script src="/Pizzaservice/app/Shared.js"></script>
+    <script src="/Pizzaservice/app/Api.js"></script>
     <title>Orderpage</title>
 </head>
 
@@ -68,7 +69,9 @@
                             <img src="/Pizzaservice/app/ressources/thunfisch.jpeg" alt="Thunfisch" class="ingredient-image"> Thunfisch
                         </label>
                     </div>
+                    <textarea type="text" class="message" placeholder="Nachricht an den Koch"></textarea>
                 </div>
+               
             </div>
 
             <div class="grid-item content-row">

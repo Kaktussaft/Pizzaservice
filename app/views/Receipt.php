@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/Pizzaservice/app/style/Shared.css">
     <link rel="stylesheet" href="/Pizzaservice/app/style/Receipt.css">
-    <script src="/Pizzaservice/app/shared.js"></script>
+    <script src="/Pizzaservice/app/Shared.js"></script>
+    <script src="/Pizzaservice/app/Api.js"></script>
     <title>Receipt</title>
 </head>
 
