@@ -19,13 +19,13 @@
     <div class="order-box">
         <h1>Pizza bestellen</h1><br>
         <div class="grid-container">
-            <div class="grid-item label-row">Pizza selber Zusammenstellen</div>
-            <div class="grid-item label-row">Pizza auswählen</div>
+            <div class="grid-item label-row label-create-pizza">Pizza selber Zusammenstellen</div>
+            <div class="grid-item label-row label-create-pizza">Pizza auswählen</div>
 
             <div class="grid-item content-row">
                 <div class="grid-container-equal-split">
                     <div>
-                        <label class="checkbox-label">
+                        <label class="checkbox-label checkbox-top-label">
                             <input type="checkbox" name="zutaten[]" value="option1">
                             <img src="/Pizzaservice/app/ressources/tomatensauce.jpeg" alt="Tomatensauce" class="ingredient-image"> Tomatensauce
                         </label>
@@ -47,7 +47,7 @@
                         </label>
                     </div>
                     <div>
-                        <label class="checkbox-label">
+                        <label class="checkbox-label checkbox-top-label">
                             <input type="checkbox" name="zutaten[]" value="option6">
                             <img src="/Pizzaservice/app/ressources/zwiebeln.jpeg" alt="Zwiebeln" class="ingredient-image"> Zwiebeln
                         </label>
