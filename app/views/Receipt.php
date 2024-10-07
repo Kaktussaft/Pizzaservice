@@ -12,21 +12,27 @@
 
 <body>
     <div class="navigation">
-        <button class="navigation-button" type="submit">Hauptmenü</button>
+        <button class="navigation-button" type="submit" id="Main-menu">Hauptmenü</button>
     </div>
 
     <div class="receipt-box">
         <br><br>
         <div>
-        <h1>Rechnungen</h1><br>
+            <h1>Rechnungen</h1><br>
         </div class="receipt-container">
         <div><select name="rechnungen" id="rechnungen" class="receipt-select">
                 <option value="rechnung1">Rechnung 1</option>
                 <option value="rechnung2">Rechnung 2</option>
                 <option value="rechnung3">Rechnung 3</option>
         </div>
-
     </div>
+
+    <script>
+        document.getElementById('Main-menu').addEventListener('click', function() {
+            backendCall("UserController", "redirectToMainMenu",null);
+            console.log("Main-menu");
+        });
+    </script>
 
 </body>
 
