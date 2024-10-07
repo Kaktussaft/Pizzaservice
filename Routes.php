@@ -14,4 +14,10 @@ Route::set('Receipt', function(){
    include 'app/views/Receipt.php';
 });
 
+Route::set('ApiController', function(){
+   include 'app/controllers/ApiController.php';
+   $apiController = new \app\controllers\ApiController();
+   $apiController->handleRequest();
+});
+
 ?>
