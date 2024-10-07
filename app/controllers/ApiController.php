@@ -2,80 +2,53 @@
 
 namespace app\controllers;
 
+use app\controllers\UserController; 
+
 class ApiController
 {
+    private $controller; 
+    private $method;
+    private $params = []; 
+
     public function handleRequest()
     {
-        $method = $_SERVER['REQUEST_METHOD'];
-        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $input = json_decode(file_get_contents('php://input'), true);
 
-        switch ($method) {
-            case 'GET':
-                $this->handleGet($path);
-                break;
-            case 'POST':
-                $this->handlePost($path);
-                break;
-            case 'PUT':
-                $this->handlePut($path);
-                break;
-            case 'DELETE':
-                $this->handleDelete($path);
-                break;
-            default:
-                $this->sendResponse(405, ['error' => 'Method Not Allowed']);
-                break;
+        if (!isset($input['controller']) || !isset($input['method'])) {
+            $this->sendResponse(400, ['error' => 'Invalid request']);
+            return;
         }
+
+        $controllerName = 'app\\controllers\\' . $input['controller'];
+
+        error_log('Resolving controller: ' . $controllerName);
+
+        if (!class_exists($controllerName)) {
+            $this->sendResponse(404, ['error' => 'Controller not found: ' . $controllerName]);
+            return;
+        }
+
+        $this->controller = new $controllerName();
+
+        if (!method_exists($this->controller, $input['method'])) {
+            $this->sendResponse(404, ['error' => 'Method not found: ' . $input['method']]);
+            return;
+        }
+
+        $this->method = $input['method'];
+        unset($input['method']);
+        unset($input['controller']);
+
+        $this->params = $input ? array_values($input) : [];
+        call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
-    private function handleGet($path)
-    {
-        if ($path === '/api/resource') {
-            $data = ['message' => 'GET request received'];
-            $this->sendResponse(200, $data);
-        } else {
-            $this->sendResponse(404, ['error' => 'Not Found']);
-        }
-    }
 
-    private function handlePost($path)
-    {
-        if ($path === '/api/resource') {
-            $input = json_decode(file_get_contents('php://input'), true);
-            $data = ['message' => 'POST request received', 'input' => $input];
-            $this->sendResponse(201, $data);
-        } else {
-            $this->sendResponse(404, ['error' => 'Not Found']);
-        }
-    }
-
-    private function handlePut($path)
-    {
-        if ($path === '/api/resource') {
-            $input = json_decode(file_get_contents('php://input'), true);
-            $data = ['message' => 'PUT request received', 'input' => $input];
-            $this->sendResponse(200, $data);
-        } else {
-            $this->sendResponse(404, ['error' => 'Not Found']);
-        }
-    }
-
-    private function handleDelete($path)
-    {
-        if ($path === '/api/resource') {
-            $data = ['message' => 'DELETE request received'];
-            $this->sendResponse(200, $data);
-        } else {
-            $this->sendResponse(404, ['error' => 'Not Found']);
-        }
-    }
-
-    private function sendResponse($statusCode, $data)
+    protected function sendResponse($statusCode, $data)
     {
         header('Content-Type: application/json');
         http_response_code($statusCode);
-        echo json_encode($data);
+        echo json_encode($this->params);
     }
+
 }
-$controller = new ApiController();
-$controller->handleRequest();
