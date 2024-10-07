@@ -19,16 +19,16 @@ class ApiController
             return;
         }
 
-        $controllerName = 'app\\controllers\\' . $input['controller'];
+        $controllerNamespace = 'app\\controllers\\' . $input['controller'];
 
-        error_log('Resolving controller: ' . $controllerName);
+        error_log('Resolving controller: ' . $controllerNamespace);
 
-        if (!class_exists($controllerName)) {
-            $this->sendResponse(404, ['error' => 'Controller not found: ' . $controllerName]);
+        if (!class_exists($controllerNamespace)) {
+            $this->sendResponse(404, ['error' => 'Controller not found: ' . $controllerNamespace]);
             return;
         }
 
-        $this->controller = new $controllerName();
+        $this->controller = new $controllerNamespace();
 
         if (!method_exists($this->controller, $input['method'])) {
             $this->sendResponse(404, ['error' => 'Method not found: ' . $input['method']]);
