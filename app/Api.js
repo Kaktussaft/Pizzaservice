@@ -1,71 +1,36 @@
-const API_BASE_URL = 'http://localhost/Pizzaservice';
-
-async function request(url, options) {
-    const token = localStorage.getItem('token');
-    const headers = {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-        ...options.headers,
+function backendCall(controller, method, data) {
+    const payload = {
+        controller: controller,
+        method: method,
     };
 
-    const response = await fetch(`${API_BASE_URL}${url}`, {
-        ...options,
-        headers,
-    });
-
-    if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Something went wrong');
+    if (data !== null) {
+        payload.data = data;
     }
 
-    return response.json();
-}
-
-export function get(url) {
-    return request(url, {
-        method: 'GET',
+    fetch("ApiController", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.text(); // Get the raw response text
+    })
+    .then(text => {
+        try {
+            const data = JSON.parse(text); // Attempt to parse the JSON
+            console.log(data);
+        } catch (error) {
+            console.error('Error parsing JSON:', error);
+            console.error('Raw response text:', text); // Log the raw response text
+        }
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
     });
 }
-
-export function post(url, data) {
-    return request(url, {
-        method: 'POST',
-        body: JSON.stringify(data),
-    });
-}
-
-export function put(url, data) {
-    return request(url, {
-        method: 'PUT',
-        body: JSON.stringify(data),
-    });
-}
-
-export function del(url) {
-    return request(url, {
-        method: 'DELETE',
-    });
-}
-
-
-import { get, post, put, del } from './api';
-
-// Example GET request
-get('/endpoint')
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
-
-// Example POST request
-post('/endpoint', { key: 'value' })
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
-
-// Example PUT request
-put('/endpoint', { key: 'newValue' })
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
-
-// Example DELETE request
-del('/endpoint')
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
