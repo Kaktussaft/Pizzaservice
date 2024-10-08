@@ -36,11 +36,12 @@ class ApiController
         }
         
         $this->method = $input['method'];
+        $this->params = isset($input['data']) ? array_values($input['data']) : [];
+        $result = call_user_func_array([$this->controller, $this->method], $this->params);
+
         unset($input['method']);
         unset($input['controller']);
-
-        $this->params = $input ? array_values($input) : [];
-        $result = call_user_func_array([$this->controller, $this->method], $this->params);
+        unset($input['params']);
 
         if($result != ""){
             $this->sendResponse(200, $result);
