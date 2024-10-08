@@ -4,7 +4,7 @@ namespace app\queries;
 
 use app\repository; 
 
-class PizzaQueryBuilder
+class PizzaQueries
 {
     private $update = "UPDATE Pizza SET";
     private $select = "SELECT * FROM Pizza";
@@ -14,6 +14,6 @@ class PizzaQueryBuilder
 
     public function __construct()
     {
-        $this->repository = new repository\Repository();
+        $this->repository = new Repository();
     }
 }

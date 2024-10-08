@@ -14,8 +14,10 @@ class ReceiptQueries
 
     public function __construct()
     {
-        $this->repository = new repository\Repository();
+        $this->repository = new Repository();
     }
+
+    
 
     
 }
