@@ -39,17 +39,18 @@ class UserController
 
     public function register($name, $surname, $password, $city, $postal_code, $street, $house_number)
     {
-        if($this->userQueries->uniqueUser($name, $password) != null)
-        {
+        $uniqueUser = $this->userQueries->uniqueUser($name, $password);
+        if (isset($uniqueUser[0]) && $uniqueUser[0] != null) {
             return "User already exists";
         }
         $result = $this->userQueries->CreateUser($name, $surname, $password, $city, $postal_code, $street, $house_number);
-        return $result;
+        if($result == 1)
+        {
+            return "User created";
+        }
+        return "Error creating user";
     }
 
-    public function test()
-    {
-        echo "test";
-    }
+
    
 }

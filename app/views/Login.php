@@ -49,8 +49,10 @@
         <div class="divider"></div>
 
         <p>Noch keinen Account?</p>
+        <p class="registration-message" id="register-success">Erfolgreiche Registrierung</p>
         <button type="button" class="action-button" id="show-register">Registrieren</button>
     </div>
+
     <script>
         document.getElementById('show-register').addEventListener('click', function() {
             document.getElementById('login-box').style.display = 'none';
@@ -58,6 +60,8 @@
         });
 
         document.getElementById('registration').addEventListener('click', function() {
+
+            event.preventDefault();
             const registerBox = document.getElementById('register-box');
             const inputs = registerBox.querySelectorAll('input[type="text"], input[type="password"]');
             const registrationButton = document.getElementById('registration');
@@ -89,13 +93,14 @@
                 .then(response => {
                     if (response === 'User already exists') {
                         alert('User already exists');
+                    } else if (response === 'User created') {
+                        document.getElementById('register-box').style.display = 'none';
+                        document.getElementById('login-box').style.display = 'block';
+                        document.getElementById('register-success').style.display = 'block';
                     } else {
-                        alert('User created');
+                        alert('Error creating user');
                     }
                 });
-
-            document.getElementById('register-box').style.display = 'none';
-            document.getElementById('login-box').style.display = 'block';
         });
 
         function checkInputs(inputs) {
