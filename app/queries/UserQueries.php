@@ -26,7 +26,7 @@ class UserQueries
         return $result;
     }
 
-    public function uniqueUser($name, $password)
+    public function getUserByNameAndPassword($name, $password)
     {
         $sql = $this->select . " WHERE name = ? AND password = ?";
         $parametertypes = "ss";
@@ -34,5 +34,7 @@ class UserQueries
         $result = $this->repository->ExecuteQuery($sql, $parametertypes, $parameters);
         return $result;
     }
+
+    
 
 }

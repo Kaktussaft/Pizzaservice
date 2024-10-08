@@ -32,14 +32,20 @@ class UserController
         exit();
     }
 
-    public function Login()
+    public function Login($name, $password)
     {
-
+        $user = $this->userQueries->getUserByNameAndPassword($name, $password);
+        if (isset($user[0]) && $user[0] != null) {
+            session_start();
+            $_SESSION['user'] = $user[0];
+            return "Login successful";
+        }
+        return "Login failed";
     }
 
     public function register($name, $surname, $password, $city, $postal_code, $street, $house_number)
     {
-        $uniqueUser = $this->userQueries->uniqueUser($name, $password);
+        $uniqueUser = $this->userQueries->getUserByNameAndPassword($name, $password);
         if (isset($uniqueUser[0]) && $uniqueUser[0] != null) {
             return "User already exists";
         }

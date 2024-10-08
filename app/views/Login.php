@@ -42,9 +42,9 @@
         <h1>Login</h1>
         <div class="divider"></div>
 
-        <input type="text" placeholder="Name">
-        <input type="password" placeholder="Passwort">
-        <button type="submit" class="action-button">Login</button>
+        <input id="Login-name" type="text" placeholder="Name">
+        <input id="Login-password" type="password" placeholder="Passwort">
+        <button id="Login" type="submit" class="action-button">Login</button>
 
         <div class="divider"></div>
 
@@ -58,6 +58,23 @@
             document.getElementById('login-box').style.display = 'none';
             document.getElementById('register-box').style.display = 'block';
         });
+
+        document.getElementById('Login').addEventListener('click', function() {
+            const data = {
+                name: document.getElementById('Login-name').value,
+                password: document.getElementById('Login-password').value
+            };
+
+            backendCall('UserController', 'Login', data)
+                .then(response => {
+                    if (response === 'Login successful') {
+                        window.location.href = 'http://localhost/Pizzaservice/Orderpage';
+                    } else {
+                        alert('Falscher Benutzername/Passwort');
+                    }
+                });
+
+        });    
 
         document.getElementById('registration').addEventListener('click', function() {
 
