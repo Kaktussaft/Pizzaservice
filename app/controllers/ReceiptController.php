@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 
-use app\builders\ReceiptQueries;
+use app\queries\ReceiptQueries;
 
 class ReceiptController
 {

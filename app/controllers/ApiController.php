@@ -41,10 +41,10 @@ class ApiController
 
         $this->params = $input ? array_values($input) : [];
         $result = call_user_func_array([$this->controller, $this->method], $this->params);
+
         if($result != ""){
             $this->sendResponse(200, $result);
         }
-       
     }
 
     protected function sendResponse($statusCode, $data)

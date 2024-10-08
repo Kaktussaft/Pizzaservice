@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 
-use app\builders\PizzaQueries;
+use app\queries\PizzaQueries;
 
 class PizzaController
 {

@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 
-use app\builders\OrderQueries;
+use app\queries\OrderQueries;
 
 class OrderController
 {
