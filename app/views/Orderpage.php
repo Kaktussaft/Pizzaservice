@@ -96,10 +96,8 @@
             </div>
         </div>
 
-        <div class="grid-container-three-way">
-            <button class="orderpage-button" type="submit">zur Bestellung hinzufügen</button>
-            <button class="orderpage-button" type="button" id="orderButton">Meine Bestellung</button>
-            <button class="orderpage-button" type="button">Bestellen</button>
+        <div class="container">
+            <button id="order" class="orderpage-button" type="button">Bestellen</button>
         </div>
     </div>
 
