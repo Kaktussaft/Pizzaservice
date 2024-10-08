@@ -30,7 +30,6 @@
     <script>
         document.getElementById('Main-menu').addEventListener('click', function() {
             backendCall("UserController", "redirectToMainMenu",null);
-            console.log("Main-menu");
         });
     </script>
 
