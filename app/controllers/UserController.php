@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-
 use  app\queries\UserQueries;
 
 class UserController
@@ -46,6 +45,11 @@ class UserController
         }
         $result = $this->userQueries->CreateUser($name, $surname, $password, $city, $postal_code, $street, $house_number);
         return $result;
+    }
+
+    public function test()
+    {
+        echo "test";
     }
    
 }
