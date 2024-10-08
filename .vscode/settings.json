@@ -6,5 +6,7 @@
     "php.validate.run": "onType",
     "[php]": {
         "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
-    }
+    },
+    "workbench.editor.enablePreview": true,
+    "workbench.editor.enablePreviewFromQuickOpen": true
 }
