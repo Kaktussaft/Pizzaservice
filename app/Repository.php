@@ -16,9 +16,9 @@ class Repository
     {
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param($parameterTypes, $parameters);
-        $stmt->execute();
+        $result = $stmt->execute();
         $stmt->close();
-        return $stmt;
+        return $result;
     }
 }
 
