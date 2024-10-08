@@ -57,35 +57,59 @@
             document.getElementById('register-box').style.display = 'block';
         });
 
-        // document.getElementById('registration').addEventListener('click', function() {
-
-        //     document.getElementById('register-box').style.display = 'none';
-        //     document.getElementById('login-box').style.display = 'block';
-        // });
-
-        document.addEventListener('DOMContentLoaded', function() { //Registration button clickability
+        document.getElementById('registration').addEventListener('click', function() {
             const registerBox = document.getElementById('register-box');
-            const inputs = registerBox.querySelectorAll('.input-field');
+            const inputs = registerBox.querySelectorAll('input[type="text"], input[type="password"]');
             const registrationButton = document.getElementById('registration');
-            console.log("hallo");
-            function checkInputs() {
-                let allFilled = true;
-                inputs.forEach(input => {
-                    if (input.value.trim() === '') {
-                        allFilled = false;
-                        alert('Please fill in all fields');
-                        console.log('Please fill in all fields');
-                    }
-                });
-                registrationButton.disabled = !allFilled;
+
+            password = document.getElementById('Passwort').value;
+            passwordConfirm = document.getElementById('Passwort bestätigen').value;
+
+            if (!passwordMatches(password, passwordConfirm)) {
+                alert('Passwörter stimmen nicht überein');
+                return;
             }
 
-            inputs.forEach(input => {
-                input.addEventListener('input', checkInputs);
-            });
+            if (!checkInputs(inputs)) {
+                alert('Bitte füllen Sie alle Felder aus');
+                return;
+            }
 
-            checkInputs();
+            const data = {
+                name: document.getElementById('Name').value,
+                surname: document.getElementById('Nachname').value,
+                password: password,
+                city: document.getElementById('Stadt').value,
+                postal_code: document.getElementById('Postleitzahl').value,
+                street: document.getElementById('Straße').value,
+                house_number: document.getElementById('Hausnummer').value
+            };
+
+            backendCall('UserController', 'register', data)
+                .then(response => {
+                    if (response === 'User already exists') {
+                        alert('User already exists');
+                    } else {
+                        alert('User created');
+                    }
+                });
+
+            document.getElementById('register-box').style.display = 'none';
+            document.getElementById('login-box').style.display = 'block';
         });
+
+        function checkInputs(inputs) {
+            for (let input of inputs) {
+                if (input.value.trim() === '') {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function passwordMatches(password, passwordConfirm) {
+            return password === passwordConfirm;
+        }
     </script>
 </body>
 
