@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\controllers\UserController; 
+use  app\controllers\UserController; 
 
 class ApiController
 {
@@ -21,34 +21,37 @@ class ApiController
 
         $controllerNamespace = 'app\\controllers\\' . $input['controller'];
 
-        error_log('Resolving controller: ' . $controllerNamespace);
 
-        if (!class_exists($controllerNamespace)) {
+        if (!file_exists($controllerNamespace.'.php')) {
             $this->sendResponse(404, ['error' => 'Controller not found: ' . $controllerNamespace]);
             return;
         }
 
+        require_once($controllerNamespace.'.php');
         $this->controller = new $controllerNamespace();
 
         if (!method_exists($this->controller, $input['method'])) {
             $this->sendResponse(404, ['error' => 'Method not found: ' . $input['method']]);
             return;
         }
-
+        
         $this->method = $input['method'];
         unset($input['method']);
         unset($input['controller']);
 
         $this->params = $input ? array_values($input) : [];
-        call_user_func_array([$this->controller, $this->method], $this->params);
+        $result = call_user_func_array([$this->controller, $this->method], $this->params);
+        if($result != ""){
+            $this->sendResponse(200, $result);
+        }
+       
     }
-
 
     protected function sendResponse($statusCode, $data)
     {
         header('Content-Type: application/json');
         http_response_code($statusCode);
-        echo json_encode($this->params);
+        echo json_encode($data);
     }
 
 }
