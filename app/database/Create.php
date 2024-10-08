@@ -23,13 +23,6 @@ $receiptQuery = "CREATE TABLE IF NOT EXISTS receipts (
     price DECIMAL(10,2) NOT NULL
 )";
 
-$orderQuery = "CREATE TABLE IF NOT EXISTS orders (
-    receipt_id INT(6) UNSIGNED NOT NULL,
-    FOREIGN KEY (receipt_id) REFERENCES receipts(receipt_id),
-    pizza_id INT(6) UNSIGNED NOT NULL,
-    FOREIGN KEY (pizza_id) REFERENCES pizza(pizza_id)
-)";
-
 $pizzaQuery = "CREATE TABLE IF NOT EXISTS pizza (
     pizza_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     price DECIMAL(10,2) NOT NULL,
@@ -37,12 +30,21 @@ $pizzaQuery = "CREATE TABLE IF NOT EXISTS pizza (
     message VARCHAR(1000)
 )";
 
-$queries = array($userQuery, $receiptQuery, $orderQuery, $pizzaQuery);
+$orderQuery = "CREATE TABLE IF NOT EXISTS orders (
+    receipt_id INT(6) UNSIGNED NOT NULL,
+    FOREIGN KEY (receipt_id) REFERENCES receipts(receipt_id),
+    pizza_id INT(6) UNSIGNED NOT NULL,
+    FOREIGN KEY (pizza_id) REFERENCES pizza(pizza_id)
+)";
+
+
+
+$queries = array($userQuery, $receiptQuery, $pizzaQuery, $orderQuery);
 
 foreach ($queries as $sql) {
     if ($conn->query($sql) === TRUE) {
-        echo "table"+ $sql + "created successfully";
+        echo "Table " . $sql . " created successfully";
     } else {
-        echo "error creating table "+ $sql + ": " . $conn->error;
+        echo "Error creating table " . $sql . ": " . $conn->error;
     }
 }
