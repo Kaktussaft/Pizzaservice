@@ -13,8 +13,8 @@
 
 <body>
     <div class="navigation">
-        <button class="navigation-button" type="submit">Rechnung</button>
-        <button class="navigation-button" type="submit">Logout</button>
+        <button id="Receipt" class="navigation-button" type="submit">Rechnung</button>
+        <button id="Logout" class="navigation-button" type="submit">Logout</button>
     </div>
 
     <div class="order-box">
@@ -124,6 +124,13 @@
                 popup.style.display = 'none';
             }
         });
+        document.getElementById('Receipt').addEventListener('click', function() {
+            backendCall("UserController", "redirectToReceipt",null);
+        });
+        document.getElementById('Logout').addEventListener('click', function() {
+            backendCall("UserController", "Logout",null);
+        });
+
     </script>
 </body>
 
