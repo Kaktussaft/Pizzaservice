@@ -22,9 +22,9 @@ class PizzaQueries
 
     public function create(PizzaModel $pizza)
     {
-        $sql = $this->insert . " (price, toppings, message) VALUES (?, ?, ?)";
-        $parametertypes = "dis";
-        $parameters = array($pizza->price, $pizza->toppings, $pizza->message);
+        $sql = $this->insert . " (pizza_id, price, toppings, message) VALUES (?, ?, ?)";
+        $parametertypes = "sdis";
+        $parameters = array($pizza->id, $pizza->price, $pizza->toppings, $pizza->message);
         $result = $this->repository->ExecuteQuery($sql, $parametertypes, $parameters);
         return $result;
     }
