@@ -20,7 +20,8 @@ $pizzaQuery = "CREATE TABLE IF NOT EXISTS pizza (
     receipt_id VARCHAR(16),
     FOREIGN KEY (receipt_id) REFERENCES receipts(receipt_id),
     price DECIMAL(10,2) NOT NULL,
-    toppings INT(10) NOT NULL,
+    toppings INT(10),
+    name VARCHAR(30),
     message VARCHAR(1000)
 )";
 
