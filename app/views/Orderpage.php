@@ -127,15 +127,21 @@
             if (!isChecked && message === '') {
                 event.preventDefault();
                 backendCall("PizzaController", "createPizza", {
-                    pizza: selectedPizza
-                })
-                .then(response => {
-                    if (response === 'Bestellung erfolgreich') {
-                        alert('Bestellung erfolgreich - Ihre Pizza wird in Kürze geliefert');
-                    }
-                });
-            }
-            else{
+                        pizza: selectedPizza
+                    })
+                    .then(data => {
+                        if (data.error) {
+                            alert("Error: " + data.error);
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred: ' + error.message);
+                    });
+                    
+            } else {
                 const toppings = [];
                 checkboxes.forEach(checkbox => {
                     if (checkbox.checked) {
@@ -143,14 +149,20 @@
                     }
                 });
                 backendCall("PizzaController", "createCustomPizza", {
-                    toppings: toppings,
-                    message: message
-                })
-                .then(response => {
-                    if (response === 'Bestellung erfolgreich') {
-                        alert('Bestellung erfolgreich - Ihre Pizza wird in Kürze geliefert');
-                    }
-                });
+                        toppings: toppings,
+                        message: message
+                    })
+                    .then(data => {
+                        if (data.error) {
+                            alert("Error: " + data.error);
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred: ' + error.message);
+                    });
             }
 
         });
