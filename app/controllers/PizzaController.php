@@ -37,7 +37,7 @@ class PizzaController
         $pizza = new PizzaModel($price, $toppingsInt, $message);
         $result = $this->pizzaQueries->create($pizza);
         if ($result == 1) {
-            return "Bestellung erfolgreich";
+            return "Bestellung: Pizza mit ".implode(", ", $toppings)." erfolgreich";
         }
     }
 
@@ -46,11 +46,10 @@ class PizzaController
         foreach (PizzaModel::PizzaMenu as $pizzaName => $pizzaInt) {
             if ($pizzaName == $name) {
                 $price = $pizzaInt;
-                $newPizza = new PizzaModel($price, $this->getIntFromPizza($name), "");
-                $result = $this->pizzaQueries->create($newPizza);
+                $newPizza = new PizzaModel($price, bindec($this->getIntFromPizza($name)), "");
                 $result = $this->pizzaQueries->create($newPizza);
                 if ($result == 1) {
-                    return "Bestellung erfolgreich";
+                    return "Bestellung: Pizza ". $name." erfolgreich";
                 }
             }
         }
@@ -58,18 +57,13 @@ class PizzaController
 
     public function convertIntToIngredients(int $toppings)
     {
-        $toppingsArray = $this->breakUpToppings($toppings);
-        $pizza = array();
-        for ($i = 0; $i < 10; $i++) {
-            if ($toppingsArray[$i] == 1) {
-                $pizza[] = $this->pizzaToppings[$i];
-            }
-        }
-        return $pizza;
+       $binary = decbin($toppings);
+       $length = strlen($binary);
     }
 
     public function convertIngredientsToInt(array $ingredients) 
     {
+        $ingredients[] = "end";
         $result = null;
         $j = 0;
         for ($i = 0; $i <  10; $i++) {
