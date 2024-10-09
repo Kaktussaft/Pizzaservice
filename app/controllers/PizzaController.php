@@ -4,16 +4,19 @@ namespace app\controllers;
 
 use app\queries\PizzaQueries;
 use app\models\PizzaModel;
+use app\controllers\ReceiptController;
+
 
 class PizzaController
 {
     private $pizzaQueries;
-    private $pizzaModel;
+    private $receiptController;
     private array $pizzaToppings = ["Tomatensauce", "Mozzarralla", "Salami", "Schinken", "Pilze", "Zwiebeln",  "Paprika", "Oliven", "Speck",  "Thunfisch"];
 
     public function __construct()
     {
         $this->pizzaQueries = new PizzaQueries();
+        $this->receiptController = new ReceiptController();
     }
 
 
@@ -31,25 +34,37 @@ class PizzaController
 
     public function createCustomPizza(array $toppings, string $message)
     {
+        if(!isset($_SESSION['user'])) {
+            return "Bitte einloggen";
+        }
+        $receiptId = $this->getReceiptId();
         $toppingsString = $this->convertIngredientsToInt($toppings);
         $price = $this->calculatePrice($toppingsString);
         $toppingsInt = bindec($toppingsString);
-        $pizza = new PizzaModel($price, $toppingsInt, $message);
+        $pizzaId = $this->genereateUUID();
+        $pizza = new PizzaModel($pizzaId, $receiptId, $price, $toppingsInt, $message);
         $result = $this->pizzaQueries->create($pizza);
         if ($result == 1) {
-            return "Bestellung: Pizza mit ".implode(", ", $toppings)." erfolgreich";
+            return "Zur Bestellung hinzugefügt: Pizza mit ".implode(", ", $toppings);
         }
     }
 
     public function createPizza(string $name)
     {
+        if(!isset($_SESSION['user'])) {
+            return "Bitte einloggen";
+        }
+
         foreach (PizzaModel::PizzaMenu as $pizzaName => $pizzaInt) {
             if ($pizzaName == $name) {
+                $receiptId = $this->getReceiptId();
                 $price = $pizzaInt;
-                $newPizza = new PizzaModel($price, bindec($this->getIntFromPizza($name)), "");
+                $pizzaId = $this->genereateUUID();
+                $newPizza = new PizzaModel($pizzaId, $receiptId, $price, bindec($this->getIntFromPizza($name)), "");
                 $result = $this->pizzaQueries->create($newPizza);
                 if ($result == 1) {
-                    return "Bestellung: Pizza ". $name." erfolgreich";
+
+                    return "Zur Bestellung hinzugefügt: Pizza ". $name;
                 }
             }
         }
@@ -92,5 +107,25 @@ class PizzaController
         $toppingsArray = str_split($toppings);
         $toppingsArray = array_map('intval', $toppingsArray);
         return $toppingsArray;
+    }
+
+    private function getReceiptId()
+    {
+        $userId = $_SESSION['user']->id;
+        $receiptId = '';
+        if($receiptId =$this->receiptController->openReceiptExists($userId) != false)
+        {
+            return $receiptId;
+        }
+        else{
+            $receiptId = $this->genereateUUID();
+            $this->receiptController->createReceipt($receiptId, $userId);
+            return $receiptId;
+        }
+    }
+    
+    private function genereateUUID()
+    {
+        return bin2hex(random_bytes(8));
     }
 }
