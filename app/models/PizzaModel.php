@@ -27,6 +27,8 @@ class PizzaModel
     public const Speck = 0.7;
     public const Thunfisch = 0.7;
 
+    public const Ingredients = ["Tomatensauce", "Mozzarella", "Salami", "Schinken", "Pilze", "Zwiebeln", "Paprika", "Oliven", "Speck", "Thunfisch"];
+
     public const prices = [0.1, 0.2, 0.7, 0.7, 0.2, 0.2, 0.2, 0.2, 0.7, 0.7];
 
     public const IntForPizzas = [
