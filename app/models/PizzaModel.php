@@ -4,13 +4,16 @@ namespace app\models;
 
 class PizzaModel
 {
-    public int $id;
+    public string $id;
+    public string $receiptId;
     public float $price;
     public int $toppings;
     public string $message; 
 
-    public function __construct(float $price, int $toppings, string $message)
+    public function __construct(string $id, string $receiptId, float $price, int $toppings, string $message)
     {
+        $this->id = $id;
+        $this->receiptId = $receiptId;
         $this->price = $price;
         $this->toppings = $toppings;
         $this->message = $message;
