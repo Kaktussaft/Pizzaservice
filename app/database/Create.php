@@ -30,7 +30,6 @@ $receiptQuery = "CREATE TABLE IF NOT EXISTS receipts (
     pizza_id INT(6) UNSIGNED NOT NULL,
     FOREIGN KEY (pizza_id) REFERENCES pizza(pizza_id),
     orderdate DATE NOT NULL,
-    price DECIMAL(10,2) NOT NULL
 )";
 
 
