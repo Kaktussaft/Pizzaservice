@@ -36,7 +36,6 @@ class UserController
     {
         $user = $this->userQueries->getUserByNameAndPassword($name, $password);
         if (isset($user[0]) && $user[0] != null) {
-            session_start();
             $_SESSION['user'] = $user[0];
             return "Login successful";
         }
