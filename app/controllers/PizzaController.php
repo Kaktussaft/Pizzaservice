@@ -11,7 +11,7 @@ class PizzaController
 {
     private $pizzaQueries;
     private $receiptController;
-    private array $pizzaToppings = ["Tomatensauce", "Mozzarralla", "Salami", "Schinken", "Pilze", "Zwiebeln",  "Paprika", "Oliven", "Speck",  "Thunfisch"];
+    private array $pizzaToppings = ["Tomatensauce", "Mozzarrella", "Salami", "Schinken", "Pilze", "Zwiebeln",  "Paprika", "Oliven", "Speck",  "Thunfisch"];
 
     public function __construct()
     {
@@ -34,7 +34,7 @@ class PizzaController
 
     public function createCustomPizza(array $toppings, string $message)
     {
-        if(!isset($_SESSION['user'])) {
+        if (!isset($_SESSION['user'])) {
             return "Bitte einloggen";
         }
         $receiptId = $this->getReceiptId();
@@ -42,16 +42,16 @@ class PizzaController
         $price = $this->calculatePrice($toppingsString);
         $toppingsInt = bindec($toppingsString);
         $pizzaId = $this->genereateUUID();
-        $pizza = new PizzaModel($pizzaId, $receiptId, $price, $toppingsInt, $message);
+        $pizza = new PizzaModel($pizzaId, $receiptId, $price, $toppingsInt, "",  $message);
         $result = $this->pizzaQueries->create($pizza);
         if ($result == 1) {
-            return "Zur Bestellung hinzugefügt: Pizza mit ".implode(", ", $toppings);
+            return "Zur Bestellung hinzugefügt: Pizza mit " . implode(", ", $toppings);
         }
     }
 
     public function createPizza(string $name)
     {
-        if(!isset($_SESSION['user'])) {
+        if (!isset($_SESSION['user'])) {
             return "Bitte einloggen";
         }
 
@@ -60,30 +60,63 @@ class PizzaController
                 $receiptId = $this->getReceiptId();
                 $price = $pizzaInt;
                 $pizzaId = $this->genereateUUID();
-                $newPizza = new PizzaModel($pizzaId, $receiptId, $price, bindec($this->getIntFromPizza($name)), "");
+                $newPizza = new PizzaModel($pizzaId, $receiptId, $price, bindec($this->getIntFromPizza($name)), $name, "");
                 $result = $this->pizzaQueries->create($newPizza);
                 if ($result == 1) {
 
-                    return "Zur Bestellung hinzugefügt: Pizza ". $name;
+                    return "Zur Bestellung hinzugefügt: Pizza " . $name;
                 }
             }
         }
     }
 
-    public function convertIntToIngredients(int $toppings)
+    public function getOpenOrders()
     {
-       $binary = decbin($toppings);
-       $length = strlen($binary);
+        $userId = $_SESSION['user']['user_id'];
+        $receiptId = $this->receiptController->openReceiptExists($userId);
+        if ($receiptId != false) {
+            $result = $this->pizzaQueries->readByReceiptId($receiptId);
+            $pizzas = [];
+            foreach ($result as $row) {
+                if ($row['name'] != "") {
+                    $pizzas[] = [
+                        'price' => $row['price'],
+                        'name' => $row['name']
+                    ];
+                } else {
+                    $pizzas[] = [
+                        'price' => $row['price'],
+                        'toppings' => $this->convertIntToIngredients($row['toppings'])
+                    ];
+                }
+            }
+            return $pizzas;
+        } else {
+            return "Ihre Bestellung ist leer";
+        }
     }
 
-    public function convertIngredientsToInt(array $ingredients) 
+    public function convertIntToIngredients(int $toppings)
+    {
+        $binary = decbin($toppings);
+        $toppingsArray = $this->breakUpToppings($binary);
+        $length = strlen($binary);
+        for ($i = 0; $i < $length; $i++) {
+            if ($toppingsArray[$i] == 1) {
+                $result[] = $this->pizzaToppings[$i];
+            }
+        }
+        return $result;
+    }
+
+    public function convertIngredientsToInt(array $ingredients)
     {
         $ingredients[] = "end";
         $result = null;
         $j = 0;
         for ($i = 0; $i <  10; $i++) {
 
-            if (PizzaModel::Ingredients[$i] ==$ingredients[$j]) {
+            if (PizzaModel::Ingredients[$i] == $ingredients[$j]) {
                 $result .= '1';
                 $j++;
             } else {
@@ -111,19 +144,17 @@ class PizzaController
 
     private function getReceiptId()
     {
-        $userId = $_SESSION['user']->id;
-        $receiptId = '';
-        if($receiptId =$this->receiptController->openReceiptExists($userId) != false)
-        {
+        $userId = $_SESSION['user']['user_id'];
+        $receiptId = $this->receiptController->openReceiptExists($userId);
+        if ($receiptId != false) {
             return $receiptId;
-        }
-        else{
+        } else {
             $receiptId = $this->genereateUUID();
             $this->receiptController->createReceipt($receiptId, $userId);
             return $receiptId;
         }
     }
-    
+
     private function genereateUUID()
     {
         return bin2hex(random_bytes(8));

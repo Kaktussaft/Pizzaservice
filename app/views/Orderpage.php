@@ -91,36 +91,31 @@
             </div>
 
             <div id="popup" class="popup">
-                <div class="popup-content">
-                    <span class="close-button" id="closeButton">&times;</span>
+                <div class="popup-header">
+                    <span class="close-button" id="closePopup">&times;</span>
                     <h2>Bestellübersicht</h2>
-                    <p>Hier ist Ihre Bestellung:</p>
+                    <div class="popup-content">
 
+                    </div>
                 </div>
+
             </div>
 
         </div>
         <div class="grid-container-three-way">
-            <button id="order" class="orderpage-button" type="submit">zur Bestellung hinzufügen</button>
-            <button class="orderpage-button" type="button" id="orderButton">Meine Bestellung</button>
+            <button id="addToOrder" class="orderpage-button" type="submit">zur Bestellung hinzufügen</button>
+            <button id="myOrderButton" class="orderpage-button" type="button">Meine Bestellung</button>
             <button class="orderpage-button" type="button">Bestellen</button>
         </div>
 
     </div>
 
-
-
-
     <script>
-        var orderButton = document.getElementById('orderButton');
-        var popup = document.getElementById('popup');
-        var closeButton = document.getElementById('closeButton');
-
-        orderButton.addEventListener('click', function() {
+        myOrderButton.addEventListener('click', function() {
             popup.style.display = 'flex';
         });
 
-        closeButton.addEventListener('click', function() {
+        closePopup.addEventListener('click', function() {
             popup.style.display = 'none';
         });
 
@@ -137,7 +132,7 @@
             backendCall("UserController", "Logout", null);
         });
 
-        document.getElementById('order').addEventListener('click', function() {
+        document.getElementById('addToOrder').addEventListener('click', function() {
 
             const checkboxes = document.querySelectorAll('input[name="zutaten[]"]');
             const messageElement = document.getElementById('message');
@@ -170,10 +165,9 @@
                         alert('An error occurred: ' + error.message);
                     });
 
-            } else if(!isChecked ){
+            } else if (!isChecked) {
                 alert("Bitte wählen Sie mindestens einen Belag aus");
-            }
-            else {
+            } else {
                 const toppings = [];
                 checkboxes.forEach(checkbox => {
                     if (checkbox.checked) {
@@ -198,6 +192,57 @@
             }
 
         });
+
+        document.getElementById('myOrderButton').addEventListener('click', function() {
+            var popup = document.getElementById('popup');
+            var closePopup = document.getElementById('closePopup');
+
+            myOrderButton.addEventListener('click', function() {
+                popup.style.display = 'flex';
+            });
+
+            closePopup.addEventListener('click', function() {
+                popup.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target == popup) {
+                    popup.style.display = 'none';
+                    clearPopupContent()
+                }
+            });
+
+            backendCall("PizzaController", "getOpenOrders", null)
+                .then(response => {
+                    if (response === "Ihre Bestellung ist leer") {
+                        const p = document.createElement('p');
+                        p.textContent = response;
+                        document.querySelector('.popup-content').appendChild(p);
+                    } else {
+                        for (const pizza of response) {
+                            const p = document.createElement('p');
+                            if (pizza.name) {
+                                p.textContent = ` ${pizza.name} - €${parseFloat(pizza.price).toFixed(2)}`;
+                            } else {
+                                p.textContent = ` Pizza mit: ${pizza.toppings.join(', ')} - €${parseFloat(pizza.price).toFixed(2)}`;
+                            }
+                            document.querySelector('.popup-content').appendChild(p);
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred: ' + error.message);
+                });
+
+        });
+
+        function clearPopupContent() {
+            const popupContent = document.querySelector('.popup-content');
+            while (popupContent.firstChild) {
+                popupContent.removeChild(popupContent.firstChild);
+            }
+        }
     </script>
 </body>
 

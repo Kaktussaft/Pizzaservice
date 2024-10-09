@@ -4,6 +4,7 @@ namespace app\controllers;
 
 
 use app\queries\ReceiptQueries;
+use app\controllers\PizzaController; 
 use app\models\ReceiptModel;
 
 class ReceiptController
@@ -25,16 +26,25 @@ class ReceiptController
 
     public function openReceiptExists($userId)
     {
-       $result= $this->receiptQueries->readByUserId($userId);
-       if($result->num_rows > 0)
-       {
-        $row = $result->fetch_assoc(); 
-        return $row['receipt_id'];
-       }
-       else
-       {
-           return false;
-       }
+        $result = $this->receiptQueries->readByUserId($userId);
+        if (!empty($result) && isset($result[0]['receipt_id']) && $result[0]['receipt_id'] != "") {
+            return $result[0]['receipt_id'];
+        } else {
+            return false;
+        }
+    }
 
+    public function order()
+    {
+        $userId = $_SESSION['user_id'];
+        $receiptId = $this->openReceiptExists($userId);
+        if ($receiptId == false) {
+           return "Ihre Bestellung ist leer"; 
+        }
+        else{
+            $this->receiptQueries->updateReceipt($receiptId);
+            return "Ihre Bestellung wurde erfolgreich abgeschickt - Die Pizza wird in Kürze geliefert";
+        }
+       
     }
 }

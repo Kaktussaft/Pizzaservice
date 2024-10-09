@@ -8,14 +8,16 @@ class PizzaModel
     public string $receiptId;
     public float $price;
     public int $toppings;
+    public string $name; 
     public string $message; 
 
-    public function __construct(string $id, string $receiptId, float $price, int $toppings, string $message)
+    public function __construct(string $id, string $receiptId, float $price, int $toppings,string $name, string $message)
     {
         $this->id = $id;
         $this->receiptId = $receiptId;
         $this->price = $price;
         $this->toppings = $toppings;
+        $this->name = $name;
         $this->message = $message;
     }
 

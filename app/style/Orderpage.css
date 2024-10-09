@@ -144,10 +144,17 @@
 
 .popup-content {
     background-color: #FFE6CC; 
+    width: 400px;
+    text-align: center;
+    word-wrap: break-word; 
+    white-space: normal; 
+}
+.popup-header {
+    background-color: #FFE6CC; 
     border: 2px solid black;
     padding: 20px;
     border-radius: 5px;
-    width: 300px;
+    width: 400px;
     text-align: center;
 }
 
