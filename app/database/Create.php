@@ -15,25 +15,26 @@ $userQuery = "CREATE TABLE IF NOT EXISTS users (
     house_number INT(10)
 )";
 
-$receiptQuery = "CREATE TABLE IF NOT EXISTS receipts (
-    receipt_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    user_id INT(6) UNSIGNED NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    orderdate DATE NOT NULL,
-    price DECIMAL(10,2) NOT NULL
-)";
-
 $pizzaQuery = "CREATE TABLE IF NOT EXISTS pizza (
     pizza_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    receipt_id INT(6) UNSIGNED NOT NULL,
-    FOREIGN KEY (receipt_id) REFERENCES receipts(receipt_id),
     price DECIMAL(10,2) NOT NULL,
     toppings INT(10) NOT NULL,
     message VARCHAR(1000)
 )";
 
 
-$queries = array($userQuery, $receiptQuery, $pizzaQuery);
+$receiptQuery = "CREATE TABLE IF NOT EXISTS receipts (
+    receipt_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(6) UNSIGNED NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    pizza_id INT(6) UNSIGNED NOT NULL,
+    FOREIGN KEY (pizza_id) REFERENCES pizza(pizza_id),
+    orderdate DATE NOT NULL,
+    price DECIMAL(10,2) NOT NULL
+)";
+
+
+$queries = array($userQuery, $pizzaQuery, $receiptQuery);
 
 foreach ($queries as $sql) {
     if ($conn->query($sql) === TRUE) {
