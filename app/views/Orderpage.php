@@ -133,15 +133,18 @@
                         if (data.error) {
                             alert("Error: " + data.error);
                         } else {
-                            alert(data.message);
+                            alert(data);
                         }
                     })
                     .catch(error => {
                         console.error('Error:', error);
                         alert('An error occurred: ' + error.message);
                     });
-                    
-            } else {
+
+            } else if(!isChecked ){
+                alert("Bitte wählen Sie mindestens einen Belag aus");
+            }
+            else {
                 const toppings = [];
                 checkboxes.forEach(checkbox => {
                     if (checkbox.checked) {
@@ -156,7 +159,7 @@
                         if (data.error) {
                             alert("Error: " + data.error);
                         } else {
-                            alert(data.message);
+                            alert(data);
                         }
                     })
                     .catch(error => {
