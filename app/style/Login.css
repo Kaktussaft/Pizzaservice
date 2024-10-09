@@ -5,6 +5,7 @@
     width: 300px;
     text-align: center;
     visibility: visible;
+    border-radius: 5px;
 }
 
 .login-box input {
@@ -24,6 +25,7 @@
     text-align: center;
     align-self: center;
     visibility: visible;
+    border-radius: 5px;
 }
 
 .registration-message{
