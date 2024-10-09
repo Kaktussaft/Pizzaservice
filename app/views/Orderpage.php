@@ -73,6 +73,7 @@
                         </label>
                     </div>
                     <textarea id="message" type="text" class="message" placeholder="Nachricht an den Koch"></textarea>
+
                 </div>
 
             </div>
@@ -89,18 +90,46 @@
                 </select>
             </div>
 
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <span class="close-button" id="closeButton">&times;</span>
+                    <h2>Bestellübersicht</h2>
+                    <p>Hier ist Ihre Bestellung:</p>
+
+                </div>
+            </div>
 
         </div>
-
-        <div class="container">
-            <button id="order" class="orderpage-button" type="button">Bestellen</button>
+        <div class="grid-container-three-way">
+            <button id="order" class="orderpage-button" type="submit">zur Bestellung hinzufügen</button>
+            <button class="orderpage-button" type="button" id="orderButton">Meine Bestellung</button>
+            <button class="orderpage-button" type="button">Bestellen</button>
         </div>
+
     </div>
 
 
 
 
     <script>
+        var orderButton = document.getElementById('orderButton');
+        var popup = document.getElementById('popup');
+        var closeButton = document.getElementById('closeButton');
+
+        orderButton.addEventListener('click', function() {
+            popup.style.display = 'flex';
+        });
+
+        closeButton.addEventListener('click', function() {
+            popup.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == popup) {
+                popup.style.display = 'none';
+            }
+        });
+
         document.getElementById('Receipt').addEventListener('click', function() {
             backendCall("UserController", "redirectToReceipt", null);
         });
