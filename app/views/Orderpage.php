@@ -237,6 +237,17 @@
 
         });
 
+        document.getElementById('order').addEventListener('click', function() {
+            backendCall("ReceiptController", "order", null)
+                .then(response => {
+                    alert(response);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred: ' + error.message);
+                });
+        });
+
         function clearPopupContent() {
             const popupContent = document.querySelector('.popup-content');
             while (popupContent.firstChild) {
