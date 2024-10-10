@@ -1,6 +1,7 @@
 .order-box {
     background-color:none;; 
     padding: 10px;
+    margin-top: 150px; 
     width: 900px;
     height: 800px;
     text-align: center;
@@ -43,6 +44,12 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+.title-container {
+    flex: 1;
+    text-align: center;
+    margin-left: 55px; 
 }
 
 .grid-item {

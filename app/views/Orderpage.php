@@ -13,14 +13,19 @@
 
 <body>
     <div class="navigation">
-        <button id="Receipt" class="navigation-button" type="submit">Rechnung</button>
-        <button id="Logout" class="navigation-button" type="submit">Logout</button>
+        <div class="container">
+            <div class="title-container">
+                <h1 class="h1-formatting">Pizzaservice</h1>
+            </div>
+            <div class="button-container">
+                <button id="Receipt" class="navigation-button" type="submit">Rechnung</button>
+                <button id="Logout" class="navigation-button" type="submit">Logout</button>
+            </div>
+        </div>
     </div>
 
     <div class="order-box">
-        <div class="container">
-            <h1 class="h1-formatting">Pizzaservice</h1><br>
-        </div>
+
 
         <div class="grid-container">
             <div class="grid-item label-row label-create-pizza">Pizza selber Zusammenstellen</div>
@@ -105,7 +110,7 @@
         <div class="grid-container-three-way">
             <button id="addToOrder" class="orderpage-button" type="submit">zur Bestellung hinzufügen</button>
             <button id="myOrderButton" class="orderpage-button" type="button">Meine Bestellung</button>
-            <button class="orderpage-button" type="button">Bestellen</button>
+            <button id ="order" class="orderpage-button" type="button">Bestellen</button>
         </div>
 
     </div>

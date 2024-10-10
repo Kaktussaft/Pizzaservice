@@ -83,10 +83,16 @@ body {
 }
 
 .navigation {
-    position: absolute;
+    position:absolute; 
     top: 10px;
     right: 10px;
     display: flex;
     gap: 15px; /* Space between buttons */
     margin-right: 15px; 
+    width: 100vw; 
+}
+
+.pos-center{
+    justify-content: center;
+    align-items: center;
 }
