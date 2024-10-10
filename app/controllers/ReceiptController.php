@@ -17,7 +17,7 @@ class ReceiptController
     public function __construct()
     {
         $this->receiptQueries = new ReceiptQueries();
-        $this->pizzaController = new PizzaController();
+        $this->pizzaController = new PizzaController($this);
         $this->userController = new UserController();
     }
 

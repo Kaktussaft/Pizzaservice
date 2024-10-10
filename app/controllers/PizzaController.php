@@ -13,10 +13,10 @@ class PizzaController
     private $receiptController;
     private array $pizzaToppings = ["Tomatensauce", "Mozzarrella", "Salami", "Schinken", "Pilze", "Zwiebeln",  "Paprika", "Oliven", "Speck",  "Thunfisch"];
 
-    public function __construct()
+    public function __construct(ReceiptController $receiptController)
     {
         $this->pizzaQueries = new PizzaQueries();
-        $this->receiptController = new ReceiptController();
+        $this->receiptController = $receiptController;
     }
 
 
