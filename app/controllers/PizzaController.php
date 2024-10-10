@@ -134,6 +134,7 @@ class PizzaController
         $toppingsArray = array_reverse($this->breakUpToppings($binary));
         $length = strlen($binary);
         $ingredients = array_reverse($this->pizzaToppings);
+        $result = [];
         for ($i = 0; $i < $length; $i++) {
             if ($toppingsArray[$i] == 1) {
                 $result[] = $ingredients[$i];
