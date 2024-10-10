@@ -28,7 +28,14 @@ class ApiController
         }
 
         require_once($controllerNamespace.'.php');
-        $this->controller = new $controllerNamespace();
+        
+        if ($input['controller'] === 'PizzaController') {
+            $receiptController = new ReceiptController();
+            $this->controller = new $controllerNamespace($receiptController);
+        } else {
+            $this->controller = new $controllerNamespace();
+        }
+
 
         if (!method_exists($this->controller, $input['method'])) {
             $this->sendResponse(404, ['error' => 'Method not found: ' . $input['method']]);
