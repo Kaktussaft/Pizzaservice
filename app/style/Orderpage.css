@@ -1,6 +1,5 @@
 .order-box {
     background-color:none;; 
-    margin-top:100px; 
     padding: 10px;
     width: 900px;
     height: 800px;
@@ -47,7 +46,7 @@
 }
 
 .grid-item {
-    align-items: top;
+    padding: 10px;
 }
 
 .label-row {
@@ -94,7 +93,6 @@
 
 .pizza-select{
     width:250px;
-    height: 40px;
     padding: 8px;
     margin: 10px; 
     border: 1px solid black;
@@ -118,15 +116,11 @@
     margin-right: 8px; 
 }
 
-.margin-left{
-    margin-left: 10px; 
-}
-
-.button-create-pizza{
+.label-create-pizza{
     background-color: white;
     color: black;
     width: 230px;
-    height: 60px; 
+    height: 40px; 
     padding: 10px 20px;
     margin: 10px; 
     border: 1px solid black;
@@ -134,9 +128,6 @@
     position: center; 
 }
 
-.button-create-pizza:hover {
-    background-color: #FFE6CC; 
-}
 
 /* Popup */
 .popup {
@@ -149,18 +140,14 @@
     background-color: rgba(0, 0, 0, 0.5); 
     justify-content: center;
     align-items: center;
-    border-radius: 5%;
 }
 
 .popup-content {
     background-color: #FFE6CC; 
     width: 400px;
-    height: 300px; 
     text-align: center;
     word-wrap: break-word; 
     white-space: normal; 
-    overflow-y: auto; 
-    scroll-snap-align: right;
 }
 .popup-header {
     background-color: #FFE6CC; 
@@ -194,8 +181,6 @@
     margin: 10px; 
     border: 1px solid black;
     border-radius: 5px;
-    position: center;
-    align-items: center;
 }
 
 
