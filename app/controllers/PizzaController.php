@@ -86,7 +86,8 @@ class PizzaController
                 } else {
                     $pizzas[] = [
                         'price' => $row['price'],
-                        'toppings' => $this->convertIntToIngredients($row['toppings'])
+                        'toppings' => $this->convertIntToIngredients($row['toppings']),
+                        'message' => $row['message']
                     ];
                 }
             }
@@ -96,14 +97,46 @@ class PizzaController
         }
     }
 
+    public function getPizzasPerReceipt($receiptId)
+    {
+        $result = $this->pizzaQueries->readByReceiptId($receiptId);
+        $pizzas = [];
+        foreach ($result as $row) {
+            if ($row['name'] != "") {
+                $pizzas[] = [
+                    'price' => $row['price'],
+                    'name' => $row['name']
+                ];
+            } else {
+                $pizzas[] = [
+                    'price' => $row['price'],
+                    'toppings' => $this->convertIntToIngredients($row['toppings']),
+                    'message' => $row['message']
+                ];
+            }
+        }
+        return $pizzas;
+    }
+
+    public function getPricePerReceipt($receiptId)
+    {
+        $result = $this->pizzaQueries->readByReceiptId($receiptId['receipt_id']);
+        $totalPrice = 0;
+        foreach ($result as $row) {
+            $totalPrice += $row['price'];
+        }
+        return $totalPrice;
+    }
+
     public function convertIntToIngredients(int $toppings)
     {
         $binary = decbin($toppings);
-        $toppingsArray = $this->breakUpToppings($binary);
+        $toppingsArray = array_reverse($this->breakUpToppings($binary));
         $length = strlen($binary);
+        $ingredients = array_reverse($this->pizzaToppings);
         for ($i = 0; $i < $length; $i++) {
             if ($toppingsArray[$i] == 1) {
-                $result[] = $this->pizzaToppings[$i];
+                $result[] = $ingredients[$i];
             }
         }
         return $result;

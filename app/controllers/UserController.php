@@ -56,6 +56,13 @@ class UserController
         return "Error creating user";
     }
 
+    public function getUserInformation()
+    {
+        $userId = $_SESSION['user']['user_id'];
+        $user = $this->userQueries->getUserById($userId);
+        return $user;
+    }
+
 
    
 }

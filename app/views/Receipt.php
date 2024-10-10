@@ -16,9 +16,8 @@
     </div>
 
     <div class="receipt-box">
-        <br><br>
         <div>
-            <h1>Rechnungen</h1><br>
+            <h1>Rechnungen</h1>
         </div class="receipt-container">
         <div><select name="rechnungen" id="rechnungen" class="receipt-select">
                 <option value="rechnung1">Rechnung 1</option>

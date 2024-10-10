@@ -35,6 +35,15 @@ class UserQueries
         return $result;
     }
 
+    public function getUserById($id)
+    {
+        $sql = $this->select . " WHERE user_id = ?";
+        $parametertypes = "i";
+        $parameters = array($id);
+        $result = $this->repository->ExecuteQuery($sql, $parametertypes, $parameters);
+        return $result;
+    }
+
     
 
 }
