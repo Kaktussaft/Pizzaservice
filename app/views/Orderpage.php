@@ -25,11 +25,9 @@
     </div>
 
     <div class="order-box">
-
-
         <div class="grid-container">
         <button id="showCustomPizza" class="grid-item label-row button-create-pizza" type="submit">Pizza selber Zusammenstellen</button>
-            <button id="showNormalPizza" class="grid-item label-row button-create-pizza margin-left" type="submit">Pizza auswählen</button>
+        <button id="showNormalPizza" class="grid-item label-row button-create-pizza margin-left" type="submit">Pizza auswählen</button>
 
             <div id="customPizza" class="grid-item content-row display-none">
                 <div class="grid-container-equal-split" id="custom-pizza">
@@ -83,7 +81,7 @@
 
             </div>
 
-            <div class="grid-item content-row display-none" id="normalPizza">
+            <div class="content-row display-none" id="normalPizza">
                 <select class="pizza-select" id="non-custom-pizza">
                     <option>Margherita </option>
                     <option> Pepperoni </option>
