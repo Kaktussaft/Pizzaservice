@@ -24,3 +24,43 @@
     margin: 5px; 
 }
 
+.navigation-receipt {
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: flex-end; 
+    justify-content: flex-end;
+    gap: 15px; /* Space between buttons */
+    margin-right: 15px; 
+    width: 100vw; 
+}
+
+.nav-button{
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid black;
+    font-size: 16px;
+    width: 130px; 
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 5px; 
+    text-align: center;
+}
+
+.nav-button:hover {
+    background-color: #FFE6CC; 
+}
+
+.nav {
+    position:absolute; 
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 15px; 
+    align-items: flex-end; 
+    justify-content: flex-end;
+    margin-right: 15px; 
+    width: 100vw; 
+}
+

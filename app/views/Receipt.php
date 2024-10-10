@@ -11,8 +11,8 @@
 </head>
 
 <body>
-    <div class="navigation">
-        <button class="navigation-button" type="submit" id="Main-menu">Hauptmenü</button>
+    <div class="nav">
+        <button class="navigation-receipt nav-button" type="submit" id="Main-menu">Hauptmenü</button>
     </div>
 
     <div class="receipt-box">
