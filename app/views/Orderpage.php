@@ -28,10 +28,10 @@
 
 
         <div class="grid-container">
-            <div class="grid-item label-row label-create-pizza">Pizza selber Zusammenstellen</div>
-            <div class="grid-item label-row label-create-pizza">Pizza auswählen</div>
+        <button id="showCustomPizza" class="grid-item label-row button-create-pizza" type="submit">Pizza selber Zusammenstellen</button>
+            <button id="showNormalPizza" class="grid-item label-row button-create-pizza margin-left" type="submit">Pizza auswählen</button>
 
-            <div class="grid-item content-row">
+            <div id="customPizza" class="grid-item content-row display-none">
                 <div class="grid-container-equal-split" id="custom-pizza">
                     <div>
                         <label class="checkbox-label checkbox-top-label">
@@ -83,7 +83,7 @@
 
             </div>
 
-            <div class="grid-item content-row">
+            <div class="grid-item content-row display-none" id="normalPizza">
                 <select class="pizza-select" id="non-custom-pizza">
                     <option>Margherita </option>
                     <option> Pepperoni </option>
@@ -116,6 +116,25 @@
     </div>
 
     <script>
+        //alternate between custom and normal pizza
+        document.getElementById('showCustomPizza').addEventListener('click', function() {
+            if (customPizza.style.display === 'grid') {
+                customPizza.style.display = 'none';
+            } else [
+                customPizza.style.display = 'grid',
+            ]
+
+        });
+
+        document.getElementById('showNormalPizza').addEventListener('click', function() {
+            if (normalPizza.style.display === 'grid') {
+                normalPizza.style.display = 'none';
+            } else [
+                normalPizza.style.display = 'grid',
+            ]
+        });
+
+        //popup visibility
         myOrderButton.addEventListener('click', function() {
             popup.style.display = 'flex';
         });
@@ -229,7 +248,7 @@
                             if (pizza.name) {
                                 p.textContent = ` ${pizza.name} - €${parseFloat(pizza.price).toFixed(2)}`;
                             } else {
-                                p.textContent = ` Pizza mit: ${pizza.toppings.join(', ')} - €${parseFloat(pizza.price).toFixed(2)} - ${pizza.message}`;
+                                p.textContent = ` Pizza mit: ${pizza.toppings.join(', ')} - ${pizza.message}- €${parseFloat(pizza.price).toFixed(2)} `;
                             }
                             document.querySelector('.popup-content').appendChild(p);
                         }
