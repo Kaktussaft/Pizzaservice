@@ -229,7 +229,7 @@
                             if (pizza.name) {
                                 p.textContent = ` ${pizza.name} - €${parseFloat(pizza.price).toFixed(2)}`;
                             } else {
-                                p.textContent = ` Pizza mit: ${pizza.toppings.join(', ')} - €${parseFloat(pizza.price).toFixed(2)}`;
+                                p.textContent = ` Pizza mit: ${pizza.toppings.join(', ')} - €${parseFloat(pizza.price).toFixed(2)} - ${pizza.message}`;
                             }
                             document.querySelector('.popup-content').appendChild(p);
                         }
