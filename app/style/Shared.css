@@ -90,3 +90,7 @@ body {
     gap: 15px; /* Space between buttons */
     margin-right: 15px; 
 }
+
+.display-none {
+    display: none; 
+}
