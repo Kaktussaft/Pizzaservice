@@ -38,4 +38,13 @@ class PizzaQueries
         return $result;
     }
 
+    public function delete($pizzaId)
+    {
+        $sql = $this->delete . " WHERE pizza_id = ?";
+        $parametertypes = "s";
+        $parameters = array($pizzaId);
+        $result = $this->repository->ExecuteQuery($sql, $parametertypes, $parameters);
+        return $result;
+    }
+
 }

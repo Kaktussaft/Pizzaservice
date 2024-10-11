@@ -36,11 +36,11 @@ class ReceiptQueries
         return $result;
     }
 
-    public function readAllClosedReceipts()
+    public function readAllClosedReceipts($userId)
     {
-        $sql = $this->select . " WHERE confirmed = 1";
-        $parametertypes = "";
-        $parameters = array();
+        $sql = $this->select . " WHERE confirmed = 1 AND user_id = ?";
+        $parametertypes = "i";
+        $parameters = array( $userId);
         $result = $this->repository->ExecuteQuery($sql, $parametertypes, $parameters);
         return $result;
     }

@@ -34,10 +34,12 @@ class PizzaController
 
     public function createCustomPizza(array $toppings, string $message)
     {
-        if (!isset($_SESSION['user'])) {
-            return "Bitte einloggen";
-        }
+
         $receiptId = $this->getReceiptId();
+        $isValid = $this->checkValidOrderConditions($receiptId);
+        if($isValid !== true){
+            return $isValid;
+        }
         $toppingsString = $this->convertIngredientsToInt($toppings);
         $price = $this->calculatePrice($toppingsString);
         $toppingsInt = bindec($toppingsString);
@@ -51,13 +53,14 @@ class PizzaController
 
     public function createPizza(string $name)
     {
-        if (!isset($_SESSION['user'])) {
-            return "Bitte einloggen";
+        $receiptId = $this->getReceiptId();
+        $isValid = $this->checkValidOrderConditions($receiptId);
+        if($isValid !== true){
+            return $isValid;
         }
-
         foreach (PizzaModel::PizzaMenu as $pizzaName => $pizzaInt) {
             if ($pizzaName == $name) {
-                $receiptId = $this->getReceiptId();
+
                 $price = $pizzaInt;
                 $pizzaId = $this->genereateUUID();
                 $newPizza = new PizzaModel($pizzaId, $receiptId, $price, bindec($this->getIntFromPizza($name)), $name, "");
@@ -67,6 +70,13 @@ class PizzaController
                     return "Zur Bestellung hinzugefügt: Pizza " . $name;
                 }
             }
+        }
+    }
+
+    public function deletePizza($PizzaId){
+        $result = $this->pizzaQueries->delete($PizzaId);
+        if($result == 1){
+            return "Pizza wurde gelöscht";
         }
     }
 
@@ -80,11 +90,13 @@ class PizzaController
             foreach ($result as $row) {
                 if ($row['name'] != "") {
                     $pizzas[] = [
+                        'id' => $row['pizza_id'],
                         'price' => $row['price'],
                         'name' => $row['name']
                     ];
                 } else {
                     $pizzas[] = [
+                        'id' => $row['pizza_id'],
                         'price' => $row['price'],
                         'toppings' => $this->convertIntToIngredients($row['toppings']),
                         'message' => $row['message']
@@ -120,7 +132,7 @@ class PizzaController
 
     public function getPricePerReceipt($receiptId)
     {
-        $result = $this->pizzaQueries->readByReceiptId($receiptId['receipt_id']);
+        $result = $this->pizzaQueries->readByReceiptId($receiptId);
         $totalPrice = 0;
         foreach ($result as $row) {
             $totalPrice += $row['price'];
@@ -192,5 +204,18 @@ class PizzaController
     private function genereateUUID()
     {
         return bin2hex(random_bytes(8));
+    }
+
+    public function checkValidOrderConditions($receiptId){
+        $result = $this->pizzaQueries->readByReceiptId($receiptId);
+        if (!isset($_SESSION['user'])) {
+            return "Bitte einloggen";
+        }
+        else if(isset($result[9])){
+            return "Maximal 10 Pizzen pro Bestellung";
+        }
+        else{
+            return true;
+        }
     }
 }

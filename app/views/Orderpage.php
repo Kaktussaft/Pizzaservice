@@ -26,8 +26,8 @@
 
     <div class="order-box">
         <div class="grid-container">
-        <button id="showCustomPizza" class="grid-item label-row button-create-pizza" type="submit">Pizza selber Zusammenstellen</button>
-        <button id="showNormalPizza" class="grid-item label-row button-create-pizza margin-left" type="submit">Pizza auswählen</button>
+            <button id="showCustomPizza" class="grid-item label-row button-create-pizza" type="submit">Pizza selber Zusammenstellen</button>
+            <button id="showNormalPizza" class="grid-item label-row button-create-pizza margin-left" type="submit">Pizza auswählen</button>
 
             <div id="customPizza" class="grid-item content-row display-none">
                 <div class="grid-container-equal-split" id="custom-pizza">
@@ -101,16 +101,13 @@
 
                     </div>
                 </div>
-
             </div>
-
         </div>
         <div class="grid-container-three-way">
             <button id="addToOrder" class="orderpage-button" type="submit">zur Bestellung hinzufügen</button>
             <button id="myOrderButton" class="orderpage-button" type="button">Meine Bestellung</button>
-            <button id ="order" class="orderpage-button" type="button">Bestellen</button>
+            <button id="order" class="orderpage-button" type="button">Bestellen</button>
         </div>
-
     </div>
 
     <script>
@@ -236,22 +233,46 @@
 
             backendCall("PizzaController", "getOpenOrders", null)
                 .then(response => {
+                    const popupContent = document.querySelector('.popup-content');
+                    popupContent.innerHTML = ''; // Clear previous content
+
                     if (response === "Ihre Bestellung ist leer") {
                         const p = document.createElement('p');
                         p.textContent = response;
-                        document.querySelector('.popup-content').appendChild(p);
+                        popupContent.appendChild(p);
                     } else {
                         for (const pizza of response) {
+                            const pizzaItem = document.createElement('div');
+                            pizzaItem.className = 'pizza-item';
+
+                            const deleteButton = document.createElement('button');
+                            deleteButton.textContent = '✖'; // Cross symbol
+                            deleteButton.className = 'delete-button';
+                            deleteButton.addEventListener('click', () => {
+                                // Handle deletion logic here
+                                pizzaItem.remove();
+                                // Optionally, you can call a backend function to update the order
+                                backendCall("PizzaController", "deletePizza", {
+                                    pizza_id: pizza.id
+                                });
+                            });
+
                             const p = document.createElement('p');
                             if (pizza.name) {
                                 p.textContent = ` ${pizza.name} - €${parseFloat(pizza.price).toFixed(2)}`;
+                                p.value = pizza.id;
                             } else {
-                                p.textContent = ` Pizza mit: ${pizza.toppings.join(', ')} - ${pizza.message}- €${parseFloat(pizza.price).toFixed(2)} `;
+                                p.textContent = ` Pizza mit: ${pizza.toppings.join(', ')}  ${pizza.message}- €${parseFloat(pizza.price).toFixed(2)} `;
+                                p.value = pizza.id;
                             }
-                            document.querySelector('.popup-content').appendChild(p);
+
+                            pizzaItem.appendChild(deleteButton);
+                            pizzaItem.appendChild(p);
+                            popupContent.appendChild(pizzaItem);
                         }
                     }
                 })
+
                 .catch(error => {
                     console.error('Error:', error);
                     alert('An error occurred: ' + error.message);

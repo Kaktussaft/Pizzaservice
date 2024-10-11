@@ -4,7 +4,7 @@ namespace app\controllers;
 
 
 use app\queries\ReceiptQueries;
-use app\controllers\PizzaController; 
+use app\controllers\PizzaController;
 use app\models\ReceiptModel;
 use app\controllers\UserController;
 
@@ -34,30 +34,30 @@ class ReceiptController
         $userId = $_SESSION['user']['user_id'];
         $receiptId = $this->openReceiptExists($userId);
         if ($receiptId == false) {
-           return "Ihre Bestellung ist leer"; 
-        }
-        else{
+            return "Ihre Bestellung ist leer";
+        } else {
             $this->receiptQueries->updateReceipt($receiptId);
             return "Ihre Bestellung wurde erfolgreich abgeschickt - Die Pizza wird in Kürze geliefert";
         }
-       
     }
 
-    public function getReceipts()
+    public function getFullReceipt($receipt_id)
     {
         $userId = $_SESSION['user']['user_id'];
-        $receipts = $this->getClosedReceipts();
-        $userInfo = $this->userController->getUserInformation($userId);
         $totalPrice = 0;
-        foreach($receipts as $receipt)
-        {
-           $pizzasPerReceipt = $this->pizzaController->getPizzasPerReceipt($receipt['receipt_id']);
-           $totalPrice += $this->pizzaController->getPricePerReceipt($receipt);
-        }
-       
+        $receipt= []; 
+        $userInfo = $this->userController->getUserInformation($userId);
+        $pizzasPerReceipt = $this->pizzaController->getPizzasPerReceipt($receipt_id);
+        $totalPrice += $this->pizzaController->getPricePerReceipt($receipt_id);
+        $receipt = [
+            'user' => $userInfo,
+            'pizzas' => $pizzasPerReceipt,
+            'totalPrice' => $totalPrice
+        ];
+        return $receipt;
     }
 
-    
+
     public function openReceiptExists($userId)
     {
         $result = $this->receiptQueries->readByUserId($userId);
@@ -71,14 +71,14 @@ class ReceiptController
     public function getClosedReceipts()
     {
         $receipts = [];
-        $result = $this->receiptQueries->readAllClosedReceipts();
+        $userId = $_SESSION['user']['user_id'];
+        $result = $this->receiptQueries->readAllClosedReceipts($userId);
         foreach ($result as $row) {
-           $receipts [] = [
-           '$receipt_id' => $row['$receipt_id'], 
-           'orderdate' => $row['orderdate']
-           ];
+            $receipts[] = [
+                'receipt_id' => $row['receipt_id'],
+                'orderdate' => $row['orderdate']
+            ];
         }
         return $receipts;
     }
-
 }
