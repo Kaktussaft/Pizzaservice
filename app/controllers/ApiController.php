@@ -21,7 +21,6 @@ class ApiController
 
         $controllerNamespace = 'app\\controllers\\' . $input['controller'];
 
-
         if (!file_exists($controllerNamespace.'.php')) {
             $this->sendResponse(404, ['error' => 'Controller not found: ' . $controllerNamespace]);
             return;
@@ -35,7 +34,6 @@ class ApiController
         } else {
             $this->controller = new $controllerNamespace();
         }
-
 
         if (!method_exists($this->controller, $input['method'])) {
             $this->sendResponse(404, ['error' => 'Method not found: ' . $input['method']]);
