@@ -33,7 +33,9 @@ class ReceiptController
     {
         $userId = $_SESSION['user']['user_id'];
         $receiptId = $this->openReceiptExists($userId);
-        if ($receiptId == false) {
+        $onePizza = 0; 
+        $onePizza = $this->onePizzaPerReceipt($receiptId);
+        if ($receiptId == false || $onePizza == 0) {	
             return "Ihre Bestellung ist leer";
         } else {
             $this->receiptQueries->updateReceipt($receiptId);
@@ -80,5 +82,12 @@ class ReceiptController
             ];
         }
         return $receipts;
+    }
+
+    public function onePizzaPerReceipt($receiptId)
+    {
+        $result = 0;
+        $result = $this->pizzaController->getPizzaAmountPerReceipt($receiptId);
+        return  $result;
     }
 }

@@ -130,6 +130,12 @@ class PizzaController
         return $pizzas;
     }
 
+    public function getPizzaAmountPerReceipt($receiptId)
+    {
+        $result = $this->pizzaQueries->readByReceiptId($receiptId);
+        return count($result);
+    }
+
     public function getPricePerReceipt($receiptId)
     {
         $result = $this->pizzaQueries->readByReceiptId($receiptId);
