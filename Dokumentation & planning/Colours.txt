@@ -1,4 +1,3 @@
 Button-Orange: FFE6CC
-Form-Orange: ff9933
+Form-Orange: FF9933
 Text: Black
-Font: Helvetica
